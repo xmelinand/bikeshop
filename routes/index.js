@@ -98,8 +98,8 @@ var totalBskt = req.body.totalBskt;
       },
     ],
     mode: 'payment',
-    success_url: 'https://secret-everglades-42752.herokuapp.com/success',
-    cancel_url: 'https://secret-everglades-42752.herokuapp.com/cancel',
+    success_url: 'https://fathomless-thicket-84321.herokuapp.com/success',
+    cancel_url: 'https://fathomless-thicket-84321.herokuapp.com/cancel',
   });
 
 
