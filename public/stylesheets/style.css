@@ -1,0 +1,36 @@
+body{
+  font-family: 'Darker Grotesque', sans-serif;
+}
+
+
+#picture-header {
+  background-image: url('/images/bike-background.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.card {
+margin-bottom: 20px;
+}
+.basket-img{
+  width: 170px;
+}
+
+.btn{
+  border: 2px solid;
+}
+
+.totalBasket {
+font-style: bold;
+
+}
+
+.ligne{
+  background-color:rgb(243, 243, 243) ;
+}
+
+#empty{
+  color : red;
+}

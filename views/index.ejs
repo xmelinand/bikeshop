@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
+  <title>BikeShop - Home</title>
+  <script src="https://kit.fontawesome.com/a41e9403cf.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+<header>
+  <nav class="navbar navbar-light bg-dark">
+    <a class="navbar" href="#">
+      <img src="/images/bike-logo.svg" width="50" height="50" class="logo" alt="">
+      The Bike Shop Experience
+    </a>
+  </nav>
+  <div id="picture-header">
+  </div>
+  </header>
+
+
+  <!-- BIKES SECTION: initializing of the grid here -->
+<div class="container">
+
+
+  <div class="row bikes justify-content-center">
+
+        <% 
+        for(var i=0; i<dataBike.length ; i++) {
+        %><div class="card col-12 col-sm-6 col-md-4 mt-3 justify-content-center text-center p-3">
+            <img src=<%= dataBike[i].url %> class="card-img-top" alt="red & black bike">
+            <h5  class="card-title"><%= dataBike[i].name %></h5>
+            <p class="card-text"><%= dataBike[i].price %>€<a type="button" href='/shop?index=<%=i%>&url=<%=dataBike[i].url%>&name=<%=dataBike[i].name%>&price=<%=dataBike[i].price%>&qty=1' class="btn btn-outline-primary ml-3">Buy</a></p>
+          </div>
+        <%
+        }
+        %>
+
+</div>
+  
+</div>
+
+
+
+
+  <!-- Scripts ------------------------------------------- -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
