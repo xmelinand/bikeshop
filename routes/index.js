@@ -81,22 +81,25 @@ req.session.dataCardBike[position].qty = req.body.qty
 const stripe = require('stripe')('sk_test_51LBaw1LMAG2SJJSZFGgZqiENpOKhHOz1ujLGbF5OLXVfX66wblYFgibk4rFWKgYcth2Wa7BCbygVEvm7TT7Rx8Io00ew3E39UR')
 
 router.post('/create-checkout-session', async (req, res) => {
+var shopList = [];
+var stripeItems = {};
+for(var i=0; i<req.session.dataCardBike.length; i++){  
+  stripeItems = {
+    price_data: {
+      currency: 'eur',
+      product_data: {
+        name: req.session.dataCardBike[i].name,
+      },
+      unit_amount: req.session.dataCardBike[i].price*100,
+    },
+    quantity: req.session.dataCardBike[i].qty,
+  };
+  shopList.push(stripeItems);
+}
 
-var totalBskt = req.body.totalBskt;
 
   const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        price_data: {
-          currency: 'eur',
-          product_data: {
-            name: "Vos vélos",
-          },
-          unit_amount: totalBskt * 100,
-        },
-        quantity: 1,
-      },
-    ],
+    line_items: shopList,
     mode: 'payment',
     success_url: 'https://fathomless-thicket-84321.herokuapp.com/success',
     cancel_url: 'https://fathomless-thicket-84321.herokuapp.com/cancel',
