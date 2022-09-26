@@ -34,10 +34,9 @@
     </ol>
   </nav>
   <h1>Basket</h1>
-<% if (dataCardBike.length==0){%>
+<% if (dataCardBike && dataCardBike.length==0){%>
 <h5 id="empty"> No article in the Basket. </h5>
-<%}
-else {%>
+<%} else {%>
 <table class="table">
   <thead>
     <tr>
@@ -52,9 +51,11 @@ else {%>
     </tr>
   </thead>
   <tbody>
-      <%         var total = 0 %>
-      <% 
+      <%  var total=0;
+          var ship=0;   
+          var finalTot=0; 
       for(var i=0; i<dataCardBike.length; i++) {
+        var totLn;
       %> 
       <tr class="ligne">
       <th scope="row"><%=i+1 %></th>
@@ -68,27 +69,56 @@ else {%>
                 </td>
 
       </form>
-      <td><%= dataCardBike[i].price %>€</td>
-      <td><%=dataCardBike[i].price * dataCardBike[i].qty %>€</td>
+      <td><%=dataCardBike[i].price %>€</td>
+      <td><%=totLn=dataCardBike[i].price * dataCardBike[i].qty%>€</td>
       <td><a href='/delete-shop?index=<%=i%>'type="button" class="btn btn-outline-primary"><i class="fa-solid fa-trash-can"></i></a>
       </td></td>
     </tr>
-
     <%
-    total += dataCardBike[i].price * dataCardBike[i].qty 
+    total+=totLn
   }
   %>
+  <tr>
+    <th scope="row"></th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td class='total'>Total Basket:</td>
+    <td><%=total%>€</td>
+    <td></button>
+    </td></td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td class='fdp'>Shipping fees:</td>
+    <% console.log('fdp',total);
+    if (total > 4000){
+      finalTot= total%>
+      <td><p id="free">Frais de port offerts!</p></td>
+    <%}
+    else if(total < 2000){
+      finalTot=(total+total*0.15)%>
+      <td><%=total*0.15%>€</td>
+    <%} else {
+      finalTot=(total+total*0.30)%> 
+      <td><%=total*0.3%>€</td>
+    <%}%>
+  </tr>
 
   <tr>
     <th scope="row"></th>
     <td></td>
     <td></td>
     <td></td>
-    <td class='totalBasket'>Total Basket:</td>
-    <td><%= total %>€</td>
+    <td class='totalBasket'>Total:</td>
+    <td><%= finalTot%>€</td>
     <td></button>
     </td></td>
   </tr>
+
   <tr>
     <th scope="row"></th>
     <td></td>
@@ -104,7 +134,6 @@ else {%>
   </tbody>
 </table>
 <%
-
 }
 %>
   

@@ -9,11 +9,12 @@ var usersRouter = require('./routes/users');
 
 var session = require("express-session");
 var app = express();
+var config = require("./routes/config")
 
 
 app.use(
   session({
-  secret: 'a4f8071f-c873-4447-8ee2',
+  secret: config.SECRET,
   resave: false,
   saveUninitialized: false,
   })

@@ -29,8 +29,13 @@ font-style: bold;
 
 .ligne{
   background-color:rgb(243, 243, 243) ;
+  align-items: center;
 }
 
 #empty{
+  color : red;
+}
+
+#free {
   color : red;
 }
